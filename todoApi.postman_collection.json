@@ -139,7 +139,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjlmYzc3MDk2OGFlZGZmOWJkNjQzYTgiLCJpYXQiOjE3MjE4MDY2OTcsImV4cCI6MTcyMTg5MzA5N30.5gONji03QTujXn8UUFqpdOrECJjpXfuxfAdv7xtJZT0",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjlmYzc3MDk2OGFlZGZmOWJkNjQzYTgiLCJpYXQiOjE3MjIyNTk5ODMsImV4cCI6MTcyMjM0NjM4M30.olrgTAsnrCgKj9Nc8CPD6sZAj_mPjteEMdsx5SbP_W8",
 								"type": "text"
 							}
 						],
@@ -302,6 +302,132 @@
 							"path": [
 								"tasks",
 								"66a03494e4db8ee14e22d11c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "getAllCategories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjlmYzc3MDk2OGFlZGZmOWJkNjQzYTgiLCJpYXQiOjE3MjIyNTk5ODMsImV4cCI6MTcyMjM0NjM4M30.olrgTAsnrCgKj9Nc8CPD6sZAj_mPjteEMdsx5SbP_W8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjlmYzc3MDk2OGFlZGZmOWJkNjQzYTgiLCJpYXQiOjE3MjIyNTk5ODMsImV4cCI6MTcyMjM0NjM4M30.olrgTAsnrCgKj9Nc8CPD6sZAj_mPjteEMdsx5SbP_W8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"entertainment\",\r\n    \"color\": {\r\n        \"id\": \"color_gnrMajjcBmVYeC7Q76GYt\",\r\n        \"name\": \"purple500\",\r\n        \"code\": \"#22c55e\"\r\n    },\r\n    \"icon\": {\r\n        \"id\": \"icon_vjZRkkL9vC0pdpj1MURnz\",\r\n        \"name\": \"seed\",\r\n        \"symbol\": \"☘\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/categories/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"categories",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategoryById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjlmYzc3MDk2OGFlZGZmOWJkNjQzYTgiLCJpYXQiOjE3MjIyNTk5ODMsImV4cCI6MTcyMjM0NjM4M30.olrgTAsnrCgKj9Nc8CPD6sZAj_mPjteEMdsx5SbP_W8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/categories/66a79ecfe1051ca16ff88afa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"categories",
+								"66a79ecfe1051ca16ff88afa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjlmYzc3MDk2OGFlZGZmOWJkNjQzYTgiLCJpYXQiOjE3MjIyNTk5ODMsImV4cCI6MTcyMjM0NjM4M30.olrgTAsnrCgKj9Nc8CPD6sZAj_mPjteEMdsx5SbP_W8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"66a79f2be1051ca16ff88afd\",\r\n    \"name\": \"test\",\r\n    \"color\": {\r\n        \"id\": \"color_gnrMajjcBmVYeC7Q76GYt\",\r\n        \"name\": \"purple500\",\r\n        \"code\": \"#22c55e\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/categories/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"categories",
+								"update"
 							]
 						}
 					},
