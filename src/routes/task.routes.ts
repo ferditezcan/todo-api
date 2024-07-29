@@ -5,6 +5,7 @@ import {
   editTask,
   getAllCompletedTasks,
   getAllTasks,
+  getAllTasksByCategory,
   getTasksForToday,
   toggleTaskStatus,
 } from '../controllers/task.controller';
@@ -20,6 +21,13 @@ taskRoutes.use(authenticationMiddleware);
  * @access Private
  */
 taskRoutes.route('/').get(getAllTasks);
+
+/**
+ * @route GET /tasks/tasks-by-categories/:id
+ * @desc Get tasks by categories
+ * @access Private
+ */
+taskRoutes.route("/tasks-by-categories/:id").get(getAllTasksByCategory)
 
 /**
  * @route GET /tasks/completed

@@ -18,10 +18,7 @@ export const getAllTasks = async (request: AuthRequest, response: Response) => {
   }
 };
 
-export const getAllCompletedTasks = async (
-  request: AuthRequest,
-  response: Response
-) => {
+export const getAllCompletedTasks = async (request: AuthRequest, response: Response) => {
   try {
     const userId = request.user;
 
@@ -41,13 +38,10 @@ export const getAllCompletedTasks = async (
   }
 };
 
-export const getTasksForToday = async (
-  request: AuthRequest,
-  response: Response
-) => {
+export const getTasksForToday = async (request: AuthRequest, response: Response) => {
   try {
     const userId = request.user;
-    
+
     if (!userId) {
       return response.status(401).json({ error: 'Unauthorized' });
     }
@@ -76,7 +70,7 @@ export const getTasksForToday = async (
 export const createTask = async (request: AuthRequest, response: Response) => {
   try {
     const userId = request.user;
-    const { name, date }: ITask = request.body;
+    const { name, date, categoryId }: ITask = request.body;
 
     if (!name || !date) {
       return response.status(400).json({ error: 'Name and date are required' });
@@ -85,6 +79,7 @@ export const createTask = async (request: AuthRequest, response: Response) => {
     const task = new Task({
       name,
       date,
+      categoryId,
       user: userId,
     });
 
@@ -97,10 +92,7 @@ export const createTask = async (request: AuthRequest, response: Response) => {
   }
 };
 
-export const toggleTaskStatus = async (
-  request: AuthRequest,
-  response: Response
-) => {
+export const toggleTaskStatus = async (request: AuthRequest, response: Response) => {
   try {
     const { isCompleted } = request.body;
     const { id } = request.params;
@@ -145,7 +137,7 @@ export const deleteTask = async (request: AuthRequest, response: Response) => {
 export const editTask = async (request: AuthRequest, response: Response) => {
   try {
     const { id } = request.params;
-    const { date, name }: ITask = request.body;
+    const { date, name, categoryId }: ITask = request.body;
 
     if (!name || !date) {
       return response.status(400).json({ error: 'Name and date are required' });
@@ -154,7 +146,7 @@ export const editTask = async (request: AuthRequest, response: Response) => {
     const result = await Task.updateOne(
       { _id: id, user: request.user },
       {
-        $set: { name, date },
+        $set: { name, categoryId, date },
       }
     );
 
@@ -168,3 +160,22 @@ export const editTask = async (request: AuthRequest, response: Response) => {
     response.status(500).json({ error: 'Error while updating the task' });
   }
 };
+
+export const getAllTasksByCategory = async (request: AuthRequest, response: Response) => {
+  try {
+    const userId = request.user
+    if (!userId) {
+      return response.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const { id } = request.params
+    const tasks = await Task.find({
+      user: userId,
+      categoryId: id,
+    })
+    response.status(200).json(tasks);
+  } catch (error) {
+    console.log("error in getAllTasksByCategory", error)
+    response.status(400).json({ error: 'Error while fetching tasks' });
+  }
+}

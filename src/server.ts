@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import connectToDB from './config/db';
 import dotenv from 'dotenv';
+import categoryRoutes from "./routes/category.routes"
 import userRoutes from './routes/user.routes';
 import taskRoutes from './routes/task.routes';
 
@@ -26,6 +27,7 @@ const startServer = async () => {
     });
 
     application.use('/users', userRoutes);
+    application.use("/categories", categoryRoutes)
     application.use('/tasks', taskRoutes);
 
     application.listen(PORT, () => {
